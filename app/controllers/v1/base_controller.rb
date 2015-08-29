@@ -26,18 +26,26 @@ class V1::BaseController < ApplicationController
   end
 
   def render_expired_message
-    render_response(message: "Api key is expired", info: "Refresh you api key")
+    render_message(message: "Api key is expired", info: "Refresh you api key", status: 401)
   end
 
   def render_invalid_header
-    render_response(message: "No Authorization key in header", info: "Api key is not provided")
+    render_message(
+      message: "No Authorization key in header", 
+      info: "Api key is not provided", 
+      status: 401
+    )
   end
 
-  def render_response(message:, info: nil, status: 401)
+  def render_message(message:, info: nil, status: 200)
     response_hash = {}
     response_hash[:message] = message
     response_hash[:info] = info if info
     render json: response_hash, status: status
+  end
+
+  def render_data(data)
+    render json: data
   end
 
   def api_key?

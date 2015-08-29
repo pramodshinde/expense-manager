@@ -10,17 +10,19 @@ class V1::RegistrationsController < V1::BaseController
 
   def sign_up
     if @user.save
-      render json: { email: @user.email, api_key: @user.generate_api_key }
+      data = { email: @user.email, api_key: @user.generate_api_key }
+      render_data(data)
     else
       render_error
     end
   end
 
   def render_error
-    render json: { 
+    render_message( 
       message: "Error in sign up", 
-      info: @user.errors.full_messages 
-    }, status: 422    
+      info: @user.errors.full_messages, 
+      status: 422   
+    )
   end
 
   def user_params

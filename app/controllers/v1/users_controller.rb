@@ -5,13 +5,14 @@ class V1::UsersController < V1::BaseController
     user_params = params[:user]
     user = User.where(email: user_params[:email]).first
     unless user and user.valid_password?(user_params[:password])
-      render_response(message: "Invalid email or password")
+      render_message(message: "Invalid email or password", status: 401)
     else
-      render json: { email: user.email, api_key: user.generate_api_key }
+      data = { email: user.email, api_key: user.generate_api_key }
+      render_data(data)
     end
   end
 
-  def index
-    render json: current_user
+  def expenses
+    render_data current_user.expenses
   end
 end

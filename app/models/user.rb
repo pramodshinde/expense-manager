@@ -9,6 +9,8 @@ class User
   field :email,              type: String, default: ""
   field :encrypted_password, type: String, default: ""
 
+  has_many :expenses
+
   def generate_api_key
     handler = ApiKeyHandler.new(user: self) 
     handler.encoded_api_key
