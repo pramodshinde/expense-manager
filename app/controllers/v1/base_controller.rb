@@ -2,7 +2,7 @@ class V1::BaseController < ApplicationController
   before_action :authenticate!
 
   X_API_KEY = 'X-Api-Key'
-
+  
   private
   
   def authenticate!
@@ -33,6 +33,14 @@ class V1::BaseController < ApplicationController
     render_message(
       message: "No Authorization key in header", 
       info: "Api key is not provided", 
+      status: 401
+    )
+  end
+
+  def render_decode_error
+    render_message(
+      message: "Invalid API key", 
+      info: "Obtain Api key by login api", 
       status: 401
     )
   end
