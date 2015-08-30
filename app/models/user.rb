@@ -8,7 +8,7 @@ class User
   ## Database authenticatable
   field :email,              type: String, default: ""
   field :encrypted_password, type: String, default: ""
-  field :api_daily_limit,     type: String, default: 5  
+  field :api_daily_limit,     type: Integer, default: 5  
 
   has_many :expenses
 

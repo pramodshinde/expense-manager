@@ -67,7 +67,14 @@ module Api
     end
 
     def api_throttle!
-      
+      if ApiThrottle.api_limit?(current_user.id, current_user.api_daily_limit)
+        render_message(
+          message: "Daily Api limit reached", 
+          info: "visit: http://myapp.com/help",
+          status: :too_many_requests
+        )
+        return false
+      end
     end
   end
 end

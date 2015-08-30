@@ -7,6 +7,7 @@ gem 'jwt'
 gem 'apitome'
 gem 'versionist'
 gem 'active_model_serializers'
+gem 'redis-rails'
 
 gem 'spring', :group => :development
 
