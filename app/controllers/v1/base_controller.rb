@@ -14,10 +14,10 @@ class V1::BaseController < ApplicationController
       else
         render_invalid_header
       end
-    rescue JWT::DecodeError
-      render_decode_error
     rescue JWT::ExpiredSignature
       render_expired_message
+    rescue JWT::DecodeError
+      render_decode_error
     end
   end
 
