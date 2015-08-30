@@ -1,0 +1,19 @@
+{
+  "resources": [
+    {
+      "name": "V1",
+      "examples": [
+        {
+          "description": "Login: Returns API key on success",
+          "link": "v1/login:_returns_api_key_on_success.json",
+          "groups": "all"
+        },
+        {
+          "description": "Login: Returns Invalid email or password",
+          "link": "v1/login:_returns_invalid_email_or_password.json",
+          "groups": "all"
+        }
+      ]
+    }
+  ]
+}

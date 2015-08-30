@@ -1,6 +1,7 @@
 module Api
   class V1::BaseController < ApplicationController
     before_action :authenticate!
+    before_action :api_throttle!
 
     X_API_KEY = 'X-Api-Key'
     
@@ -63,6 +64,10 @@ module Api
 
     def set_current_user(user_id)
       @current_user = User.find(user_id)
+    end
+
+    def api_throttle!
+      
     end
   end
 end
